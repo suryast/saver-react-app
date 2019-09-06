@@ -6,8 +6,12 @@ class CouponContainer extends React.Component {
   render() {
     return (
       <>
-        <div class="container">
-          <div class="grid">
+        <div className="container">
+          <div className="grid">
+            <Coupon week="1" />
+            <Coupon week="2" />
+            <Coupon week="3" />
+            <Coupon week="4" />
             <Coupon week="1" />
             <Coupon week="2" />
             <Coupon week="3" />

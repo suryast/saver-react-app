@@ -1,12 +1,7 @@
-.container {
-  max-width: 1000px;
-  margin: auto;
-  align: center;
-}
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-  grid-auto-rows: 7rem;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-auto-rows: 12rem;
 }
 
 .grid::before {
