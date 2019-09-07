@@ -1,6 +1,7 @@
 export function formatPrice(cents) {
-  return (cents / 100).toLocaleString("en-AU", {
+  return cents.toLocaleString("en-AU", {
     style: "currency",
-    currency: "AUD"
+    currency: "AUD",
+    minimumFractionDigits: "0"
   });
 }
