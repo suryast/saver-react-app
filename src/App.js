@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <h1>Saver App</h1>
-      <Form duration="52" />
+      <Form target="10000" minimum="100" duration="52" />
       <CouponContainer />
       <Target goal="1000000" />
     </div>

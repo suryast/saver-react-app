@@ -2,7 +2,7 @@ import React from "react";
 import NumberFormat from "react-number-format";
 
 const minimumInput = {
-  width: "11rem"
+  width: "14rem"
 };
 
 const durationInput = {
@@ -12,7 +12,12 @@ const durationInput = {
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { target: "10000", minimum: "100", duration: "52" };
+    this.state = {
+      target: this.props.target,
+      minimum: this.props.minimum,
+      duration: this.props.duration
+    };
+
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -26,18 +31,20 @@ export default class Form extends React.Component {
       <>
         <h3>
           <form action="">
-            I want to save ${" "}
+            I want to save
             <NumberFormat
               thousandSeparator={true}
+              prefix={"$"}
               value={this.state.target}
               onValueChange={values => {
                 this.setState({ target: values.value });
               }}
             />
-            , with minimum weekly saving of ${" "}
+            , with minimum weekly saving of
             <NumberFormat
               style={minimumInput}
               thousandSeparator={true}
+              prefix={"$"}
               value={this.state.minimum}
               onValueChange={values => {
                 this.setState({ minimum: values.value });
