@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   function randomDuration() {
-    var minDuration = 26;
+    var minDuration = 12;
     var maxDuration = 52;
     return (
       Math.floor(Math.random() * (+maxDuration - +minDuration)) + +minDuration
@@ -13,8 +13,8 @@ function App() {
   }
 
   function randomMinimum() {
-    var minMinimum = 100;
-    var maxMinimum = 250;
+    var minMinimum = 30;
+    var maxMinimum = 190;
     return (
       Math.floor(Math.random() * (+maxMinimum - +minMinimum)) + +minMinimum
     );
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Saver App</h1>
+      <h1>Saver Bingo</h1>
       <Form target={target} minimum={minimum} duration={duration} />
       <CouponContainer target={target} minimum={minimum} duration={duration} />
     </div>

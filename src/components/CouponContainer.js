@@ -8,25 +8,27 @@ class CouponContainer extends React.Component {
   drawBoxes = (target, duration, minimum) => {
     let coupons = [];
     let d = divvy(target, duration, minimum);
-    for (var i = 0; i < duration; i++) {
-      coupons.push(<Coupon key={i} value={d[i]} />);
-    }
-    return coupons;
+    return d;
   };
 
   render() {
+    let d = this.drawBoxes(
+      this.props.target,
+      this.props.duration,
+      this.props.minimum
+    );
+
+    const coupons = d.map((val, index) => {
+      return <Coupon key={index} value={val} delay={`${index * 0.02}s`} />;
+    });
+
     return (
       <>
         <div className="container">
-          <div className="grid">
-            {this.drawBoxes(
-              this.props.target,
-              this.props.duration,
-              this.props.minimum
-            )}
-          </div>
+          <div className="grid">{coupons}</div>
         </div>
-        <h1>Target {formatPrice(parseInt(this.props.target))}</h1>
+        <br />
+        <h2>Goal {formatPrice(parseInt(this.props.target))}</h2>
       </>
     );
   }
