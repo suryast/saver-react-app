@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Saver Bingo</h1>
+      <h1>Bingo Saver</h1>
       <Form target={target} minimum={minimum} duration={duration} />
       <CouponContainer target={target} minimum={minimum} duration={duration} />
     </div>

@@ -4,13 +4,13 @@ import "../styles/coupon-container.css";
 
 class Coupon extends React.Component {
   render() {
-    const styles = {
+    const couponAnimation = {
       animation: "0.3s slideIn backwards",
       animationDelay: this.props.delay
     };
     return (
       <>
-        <div style={styles}>
+        <div style={couponAnimation}>
           <br />
           <h2>{formatPrice(this.props.value)}</h2>
         </div>

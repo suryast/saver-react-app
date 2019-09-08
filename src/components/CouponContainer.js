@@ -6,19 +6,22 @@ import "../styles/coupon-container.css";
 
 class CouponContainer extends React.Component {
   drawBoxes = (target, duration, minimum) => {
-    let coupons = [];
-    let d = divvy(target, duration, minimum);
-    return d;
+    let saverMatrix = divvy(target, duration, minimum);
+    return saverMatrix;
   };
 
   render() {
-    let d = this.drawBoxes(
+    const saverMatrix = this.drawBoxes(
       this.props.target,
       this.props.duration,
       this.props.minimum
     );
 
-    const coupons = d.map((val, index) => {
+    const target = saverMatrix.reduce(function(a, b) {
+      return a + b;
+    });
+
+    const coupons = saverMatrix.map((val, index) => {
       return <Coupon key={index} value={val} delay={`${index * 0.02}s`} />;
     });
 
@@ -28,7 +31,7 @@ class CouponContainer extends React.Component {
           <div className="grid">{coupons}</div>
         </div>
         <br />
-        <h2>Goal {formatPrice(parseInt(this.props.target))}</h2>
+        <h2>Exact Sum = {formatPrice(parseInt(target))}</h2>
       </>
     );
   }
