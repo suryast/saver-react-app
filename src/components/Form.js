@@ -5,28 +5,15 @@ const minimumInput = {
   width: "14rem"
 };
 
-const durationInput = {
-  width: "5rem"
-};
-
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      target: this.props.target,
-      minimum: this.props.minimum,
-      duration: this.props.duration
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-    console.log(this.props.value);
   }
 
   render() {
+    const bold = {
+      fontWeight: "bold"
+    };
     return (
       <>
         <h3>
@@ -35,30 +22,18 @@ export default class Form extends React.Component {
             <NumberFormat
               thousandSeparator={true}
               prefix={"$"}
-              value={this.state.target}
-              onValueChange={values => {
-                this.setState({ target: values.value });
-              }}
+              value={this.props.target}
+              onChange={this.props.updateTarget}
+              isNumericString={true}
             />
             , with minimum weekly saving of
             <NumberFormat
               style={minimumInput}
               thousandSeparator={true}
               prefix={"$"}
-              value={this.state.minimum}
-              onValueChange={values => {
-                this.setState({ minimum: values.value });
-              }}
+              value={this.props.minimum}
             />
-            . <br />I want to do this in{" "}
-            <NumberFormat
-              style={durationInput}
-              value={this.state.duration}
-              onValueChange={values => {
-                this.setState({ duration: values.value });
-              }}
-            />{" "}
-            weeks.
+            . I want to do this in <span style={bold}>52</span> weeks.
           </form>
         </h3>
       </>

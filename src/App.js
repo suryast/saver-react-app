@@ -3,39 +3,51 @@ import CouponContainer from "./components/CouponContainer";
 import Form from "./components/Form";
 import "./App.css";
 
-function App() {
-  function randomDuration() {
-    var minDuration = 12;
-    var maxDuration = 52;
-    return (
-      Math.floor(Math.random() * (+maxDuration - +minDuration)) + +minDuration
-    );
-  }
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  function randomMinimum() {
-    var minMinimum = 30;
-    var maxMinimum = 190;
+    this.updateTarget = this.updateTarget.bind(this);
+  }
+  state = {
+    target: "10000",
+    minimum: "",
+    duration: "52"
+  };
+
+  randomMinimum = () => {
+    var minMinimum = 80;
+    var maxMinimum = 210;
     return (
       Math.floor(Math.random() * (+maxMinimum - +minMinimum)) + +minMinimum
     );
-  }
-  function randomTarget() {
-    var minTarget = 10000;
-    var maxTarget = 10000;
-    return Math.floor(Math.random() * (+maxTarget - +minTarget)) + +minTarget;
-  }
+  };
 
-  var target = randomTarget();
-  var minimum = randomMinimum();
-  var duration = randomDuration();
+  updateTarget = event => {
+    this.setState({ target: event.target.value });
+  };
 
-  return (
-    <div className="App">
-      <h1>Bingo Saver</h1>
-      <Form target={target} minimum={minimum} duration={duration} />
-      <CouponContainer target={target} minimum={minimum} duration={duration} />
-    </div>
-  );
+  render() {
+    let minimum = this.randomMinimum();
+    return (
+      <>
+        <div className="App">
+          <h1>Saver Bingo</h1>
+          <Form
+            target={this.state.target}
+            minimum={minimum}
+            duration={this.state.duration}
+            updateTarget={this.updateTarget}
+          />
+          <CouponContainer
+            target={this.state.target}
+            minimum={minimum}
+            duration={this.state.duration}
+          />
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;

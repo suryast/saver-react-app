@@ -5,7 +5,7 @@ import "../styles/coupon-container.css";
 class Coupon extends React.Component {
   render() {
     const couponAnimation = {
-      animation: "0.3s slideIn backwards",
+      animation: "0.1s slideIn backwards",
       animationDelay: this.props.delay
     };
     return (

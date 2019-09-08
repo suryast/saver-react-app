@@ -22,7 +22,7 @@ class CouponContainer extends React.Component {
     });
 
     const coupons = saverMatrix.map((val, index) => {
-      return <Coupon key={index} value={val} delay={`${index * 0.02}s`} />;
+      return <Coupon key={index} value={val} delay={`${index * 0.015}s`} />;
     });
 
     return (

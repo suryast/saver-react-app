@@ -1,8 +1,8 @@
-export function divvy(number, parts, min) {
-  var randombit = number - min * parts;
+export function divvy(target, duration, min) {
+  var randombit = target - min * duration;
   var out = [];
 
-  for (var i = 0; i < parts; i++) {
+  for (var i = 0; i < duration; i++) {
     out.push(Math.random());
   }
 
