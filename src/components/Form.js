@@ -33,7 +33,8 @@ export default class Form extends React.Component {
               prefix={"$"}
               value={this.props.minimum}
             />
-            . I want to do this in <span style={bold}>52</span> weeks.
+            .
+            <br />I want to do this in <span style={bold}>52</span> weeks.
           </form>
         </h3>
       </>
