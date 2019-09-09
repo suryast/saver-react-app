@@ -16,12 +16,16 @@ class App extends React.Component {
     duration: "52"
   };
 
+  componentDidMount() {
+    this.randomMinimum();
+  }
+
   randomMinimum = () => {
     var minMinimum = 80;
     var maxMinimum = 210;
-    return (
-      Math.floor(Math.random() * (+maxMinimum - +minMinimum)) + +minMinimum
-    );
+    var random =
+      Math.floor(Math.random() * (+maxMinimum - +minMinimum)) + +minMinimum;
+    this.setState({ minimum: random });
   };
 
   updateTarget = event => {
@@ -32,21 +36,29 @@ class App extends React.Component {
     this.setState({ target: value });
   };
 
+  updateMinimum = event => {
+    let value = event.target.value;
+    value = parseFloat(
+      value.replace(/(\d+),(?=\d{3}(\D|$))/g, "$1").substring(1)
+    );
+    this.setState({ minimum: value });
+  };
+
   render() {
-    let minimum = this.randomMinimum();
     return (
       <>
         <div className="App">
           <h1>Saver Bingo</h1>
           <Form
             target={this.state.target}
-            minimum={minimum}
+            minimum={this.state.minimum}
             duration={this.state.duration}
             updateTarget={this.updateTarget}
+            updateMinimum={this.updateMinimum}
           />
           <CouponContainer
             target={this.state.target}
-            minimum={minimum}
+            minimum={this.state.minimum}
             duration={this.state.duration}
           />
         </div>

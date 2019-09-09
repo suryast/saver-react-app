@@ -2,10 +2,6 @@ import React from "react";
 import NumberFormat from "react-number-format";
 
 export default class Form extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const minimumInput = {
       width: "14rem"
@@ -23,7 +19,6 @@ export default class Form extends React.Component {
               prefix={"$"}
               value={this.props.target}
               onChange={this.props.updateTarget}
-              isNumericString={true}
             />
             , with minimum weekly saving of
             <NumberFormat
@@ -31,6 +26,7 @@ export default class Form extends React.Component {
               thousandSeparator={true}
               prefix={"$"}
               value={this.props.minimum}
+              onChange={this.props.updateMinimum}
             />
             .
             <br />I want to do this in <span style={bold}>52</span> weeks.
