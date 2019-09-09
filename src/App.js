@@ -25,7 +25,11 @@ class App extends React.Component {
   };
 
   updateTarget = event => {
-    this.setState({ target: event.target.value });
+    let value = event.target.value;
+    value = parseFloat(
+      value.replace(/(\d+),(?=\d{3}(\D|$))/g, "$1").substring(1)
+    );
+    this.setState({ target: value });
   };
 
   render() {
