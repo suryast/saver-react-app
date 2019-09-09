@@ -9,6 +9,7 @@ class App extends React.Component {
 
     this.updateTarget = this.updateTarget.bind(this);
   }
+
   state = {
     target: "10000",
     minimum: "",

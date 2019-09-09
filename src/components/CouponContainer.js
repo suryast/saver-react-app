@@ -5,13 +5,13 @@ import { formatPrice } from "../helpers/formatPrice";
 import "../styles/coupon-container.css";
 
 class CouponContainer extends React.Component {
-  drawBoxes = (target, duration, minimum) => {
+  getNumbersForCoupons = (target, duration, minimum) => {
     let saverMatrix = divvy(target, duration, minimum);
     return saverMatrix;
   };
 
   render() {
-    const saverMatrix = this.drawBoxes(
+    const saverMatrix = this.getNumbersForCoupons(
       this.props.target,
       this.props.duration,
       this.props.minimum

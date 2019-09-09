@@ -1,16 +1,15 @@
 import React from "react";
 import NumberFormat from "react-number-format";
 
-const minimumInput = {
-  width: "14rem"
-};
-
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const minimumInput = {
+      width: "14rem"
+    };
     const bold = {
       fontWeight: "bold"
     };
