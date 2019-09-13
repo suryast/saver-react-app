@@ -3,18 +3,19 @@ import CouponContainer from "./components/CouponContainer";
 import Form from "./components/Form";
 import "./App.css";
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      target: "10000",
+      minimum: "",
+      duration: "52",
+      clicked: false
+    };
 
     this.updateTarget = this.updateTarget.bind(this);
+    this.updateMinimum = this.updateMinimum.bind(this);
   }
-
-  state = {
-    target: "10000",
-    minimum: "",
-    duration: "52"
-  };
 
   componentDidMount() {
     this.randomMinimum();
@@ -60,11 +61,10 @@ class App extends React.Component {
             target={this.state.target}
             minimum={this.state.minimum}
             duration={this.state.duration}
+            clicked={this.state.clicked}
           />
         </div>
       </>
     );
   }
 }
-
-export default App;

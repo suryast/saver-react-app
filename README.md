@@ -6,10 +6,9 @@ A simple react app using CSS grid and no backend. Deployed demo can be located h
 
 ## To Do
 
+- ~~Add styling for completed saving task~~
 - Add tests using Jest and Enzyme
 - Add a simple node backend with login and persistent data storage
-- Add styling for completed saving task
-- Add Storybooks integration
 
 ## Available Scripts
 

@@ -4,7 +4,7 @@ import { divvy } from "../helpers/divvy";
 import { formatPrice } from "../helpers/formatPrice";
 import "../styles/coupon-container.css";
 
-class CouponContainer extends React.Component {
+export default class CouponContainer extends React.Component {
   getNumbersForCoupons = (target, duration, minimum) => {
     let saverMatrix = divvy(target, duration, minimum);
     return saverMatrix;
@@ -36,5 +36,3 @@ class CouponContainer extends React.Component {
     );
   }
 }
-
-export default CouponContainer;
