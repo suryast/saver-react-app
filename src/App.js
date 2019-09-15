@@ -1,70 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import CouponContainer from "./components/CouponContainer";
 import Form from "./components/Form";
 import "./App.css";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      target: "10000",
-      minimum: "",
-      duration: "52",
-      clicked: false
-    };
+// Initialise the first minimum amount – maybe not the best way
 
-    this.updateTarget = this.updateTarget.bind(this);
-    this.updateMinimum = this.updateMinimum.bind(this);
-  }
+export default function App() {
+  const [target, setTarget] = useState(10000);
+  const [minimum, setMinimum] = useState(() => randomMinimum());
+  const [duration] = useState(`52`);
+  const [clicked] = useState(false);
 
-  componentDidMount() {
-    this.randomMinimum();
-  }
-
-  randomMinimum = () => {
+  function randomMinimum() {
     var minMinimum = 80;
     var maxMinimum = 210;
     var random =
       Math.floor(Math.random() * (+maxMinimum - +minMinimum)) + +minMinimum;
-    this.setState({ minimum: random });
-  };
-
-  updateTarget = event => {
-    let value = event.target.value;
-    value = parseFloat(
-      value.replace(/(\d+),(?=\d{3}(\D|$))/g, "$1").substring(1)
-    );
-    this.setState({ target: value });
-  };
-
-  updateMinimum = event => {
-    let value = event.target.value;
-    value = parseFloat(
-      value.replace(/(\d+),(?=\d{3}(\D|$))/g, "$1").substring(1)
-    );
-    this.setState({ minimum: value });
-  };
-
-  render() {
-    return (
-      <>
-        <div className="App">
-          <h1>Saver Bingo</h1>
-          <Form
-            target={this.state.target}
-            minimum={this.state.minimum}
-            duration={this.state.duration}
-            updateTarget={this.updateTarget}
-            updateMinimum={this.updateMinimum}
-          />
-          <CouponContainer
-            target={this.state.target}
-            minimum={this.state.minimum}
-            duration={this.state.duration}
-            clicked={this.state.clicked}
-          />
-        </div>
-      </>
-    );
+    return random;
   }
+
+  // This function is needed as a hack to convert the returned state from <NumberFormat /> from string back to digits
+  function updateTarget(event) {
+    let value = event.target.value;
+    value = parseFloat(
+      value.replace(/(\d+),(?=\d{3}(\D|$))/g, "$1").substring(1)
+    );
+    return setTarget(value);
+  }
+
+  // Same as above
+  function updateMinimum(event) {
+    let value = event.target.value;
+    value = parseFloat(
+      value.replace(/(\d+),(?=\d{3}(\D|$))/g, "$1").substring(1)
+    );
+    return setMinimum(value);
+  }
+
+  return (
+    <>
+      <div className="App">
+        <h1>Saver Bingo</h1>
+        <Form
+          target={target}
+          minimum={minimum}
+          duration={duration}
+          updateTarget={updateTarget}
+          updateMinimum={updateMinimum}
+        />
+        <CouponContainer
+          target={target}
+          minimum={minimum}
+          duration={duration}
+          clicked={clicked}
+        />
+      </div>
+    </>
+  );
 }
